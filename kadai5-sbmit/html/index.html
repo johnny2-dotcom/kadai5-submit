@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSシステム</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="col-sm-8 offset-sm">
+            <h2>POSシステム</h2>
+
+            <div class="form-group">
+                <label for="csv_name">メニューCSVファイル名（menu.csv)</label>
+                <input id="csv_name" type="text" class="form-control">
+
+                <label for="order">商品番号</label>
+                <input id="order" type="text" class="form-control" required>
+
+                <label for="count">商品数量</label>
+                <input id="count" type="text" class="form-control" required>
+
+                <label for="amount">お預かり金額</label>
+                <input id="amount" type="text" class="form-control" required>
+
+                <button id="run" class="btn btn-primary">実行</button><br/>
+
+                <label for="disp_view">結果表示</label>
+                <textarea id="disp_view" class="form-control" rows=30></textarea>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./eel.js"></script>
+    <script>
+        run.addEventListener('click', () => {
+            eel.system(csv_name.value,order.value,count.value,amount.value)
+        })
+
+        eel.expose(disp)
+        function disp(text){
+            disp_view.value += text + "\n"
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
